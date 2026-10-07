@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>北歐冰島 10 日：行程國家整理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #eef3f5;
+  --surface: #ffffff;
+  --ink: #16242f;
+  --muted: #55687a;
+  --line: #c9d6dd;
+  --fjord: #1f4e6b;
+  --aurora: #1f8a78;
+  --lava: #b24a36;
+  --transit: #8a98a4;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1a22; --surface: #17262f; --ink: #e6eef2; --muted: #9db0bd;
+    --line: #2b4150; --fjord: #6fb0d6; --aurora: #55c4ae; --lava: #e08a74; --transit: #7d8f9c;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1a22; --surface: #17262f; --ink: #e6eef2; --muted: #9db0bd;
+  --line: #2b4150; --fjord: #6fb0d6; --aurora: #55c4ae; --lava: #e08a74; --transit: #7d8f9c;
+}
+html { height: 100%; scroll-padding-top: env(safe-area-inset-top, 0px); }
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100%;
+  background: var(--bg); color: var(--ink);
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  line-height: 1.7; font-size: 16px;
+}
+main { max-width: 860px; margin: 0 auto; padding: 32px 20px 64px; }
+h1, h2 { font-family: "Noto Serif TC", "PMingLiU", serif; line-height: 1.3; }
+h1 { font-size: clamp(1.7rem, 5vw, 2.4rem); margin: 0 0 8px; }
+h2 { font-size: 1.35rem; margin: 48px 0 16px; }
+.sub { color: var(--muted); margin: 0; }
+
+/* Route strip */
+.route { margin-top: 28px; overflow-x: auto; padding-bottom: 8px; }
+.route ol { list-style: none; margin: 0; padding: 0; display: flex; align-items: flex-start; min-width: max-content; }
+.route li { position: relative; padding: 22px 26px 0 0; font-size: .95rem; white-space: nowrap; }
+.route li::before { content: ""; position: absolute; top: 6px; left: 0; width: 100%; height: 2px; background: var(--line); }
+.route li::after { content: ""; position: absolute; top: 0; left: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--fjord); }
+.route li.transit::after { background: var(--bg); border: 2px solid var(--transit); }
+.route li:last-child::before { width: 14px; }
+.route li small { display: block; color: var(--muted); font-size: .78rem; }
+.legend { font-size: .85rem; color: var(--muted); margin-top: 10px; }
+
+/* Country table */
+.tablewrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+table { border-collapse: collapse; width: 100%; min-width: 560px; }
+th, td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+th { font-size: .85rem; color: var(--muted); font-weight: 500; }
+td small { color: var(--muted); font-size: .8rem; }
+td.country { font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 1.1rem; white-space: nowrap; }
+.tag { display: inline-block; padding: 1px 10px; border-radius: 99px; font-size: .8rem; border: 1px solid; }
+.tag.visit { color: var(--aurora); border-color: var(--aurora); }
+.tag.transit { color: var(--muted); border-color: var(--transit); }
+
+/* Timeline */
+.days { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); margin-left: 18px; }
+.days li { position: relative; padding: 0 0 26px 28px; }
+.days li::before {
+  content: attr(data-d); position: absolute; left: -19px; top: 0;
+  width: 36px; height: 36px; border-radius: 50%; background: var(--fjord); color: var(--bg);
+  display: grid; place-items: center; font-size: .8rem; font-weight: 700;
+}
+.days li.transit::before { background: var(--bg); color: var(--muted); border: 2px solid var(--transit); }
+.days h3 { margin: 0; font-size: 1.05rem; line-height: 1.5; padding-top: 5px; }
+.days .date { display: block; font-family: "Noto Sans TC", sans-serif; font-size: .8rem; font-weight: 500; color: var(--aurora); }
+.days p { margin: 4px 0 0; color: var(--muted); font-size: .95rem; }
+
+/* Notes */
+.notes { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--lava); border-radius: 10px; padding: 8px 20px 12px; }
+.notes h3 { font-size: 1rem; margin: 14px 0 4px; }
+.notes p, .notes ul { margin: 0; color: var(--muted); font-size: .95rem; }
+.notes ul { padding-left: 1.2em; }
+footer { margin-top: 40px; font-size: .8rem; color: var(--muted); }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+a { color: var(--fjord); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>北歐冰島 10 日：行程國家整理</h1>
+    <p class="sub">可樂旅遊，2026/12/12 出發，2026/12/21 返抵桃園，經伊斯坦堡轉機</p>
+
+    <nav class="route" aria-label="路線">
+      <ol>
+        <li class="transit">桃園<small>12/12 出發</small></li>
+        <li class="transit">伊斯坦堡<small>土耳其，12/12–12/13 轉機</small></li>
+        <li>斯德哥爾摩<small>瑞典，12/13–12/14</small></li>
+        <li>雷克雅維克<small>冰島，12/14–12/17</small></li>
+        <li>赫爾辛基<small>芬蘭，12/18–12/19</small></li>
+        <li>塔林<small>愛沙尼亞，12/20</small></li>
+        <li class="transit">伊斯坦堡<small>土耳其，12/20–12/21 轉機</small></li>
+        <li class="transit">桃園<small>12/21 返抵</small></li>
+      </ol>
+    </nav>
+    <p class="legend">實心圓點是入境觀光的城市，空心圓點是轉機點。</p>
+  </header>
+
+  <h2>會去的國家</h2>
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>國家</th><th>天數</th><th>主要地點</th><th>性質</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="country">瑞典</td><td>D2–D3<br><small>12/13–12/14</small></td><td>斯德哥爾摩市區：皇宮、大教堂、舊城區</td><td><span class="tag visit">入境觀光</span></td></tr>
+        <tr><td class="country">冰島</td><td>D3–D6<br><small>12/14–12/17</small></td><td>藍湖溫泉、塞里雅蘭瀑布、斯科加爾瀑布、黑沙灘、黃金線、雪上摩托車、雷克雅維克市區</td><td><span class="tag visit">入境觀光</span></td></tr>
+        <tr><td class="country">芬蘭</td><td>D7–D8<br><small>12/18–12/19</small></td><td>赫爾辛基市區、波爾沃小鎮</td><td><span class="tag visit">入境觀光</span></td></tr>
+        <tr><td class="country">愛沙尼亞</td><td>D9<br><small>12/20</small></td><td>塔林舊城區、市政廳廣場</td><td><span class="tag visit">入境觀光</span></td></tr>
+        <tr><td class="country">土耳其</td><td>D1–D2、D9–D10<br><small>12/12–12/13、12/20–12/21</small></td><td>伊斯坦堡機場，去程與回程各轉機一次</td><td><span class="tag transit">僅轉機</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="legend">D8 搭乘詩麗雅號遊輪橫越波羅的海，航行途中不屬於任何一國。</p>
+
+  <h2>每日行程</h2>
+  <ol class="days">
+    <li data-d="D1" class="transit"><h3><span class="date">12/12（六）</span>桃園 → 伊斯坦堡</h3><p>航程約 12 小時 40 分，機上過夜。</p></li>
+    <li data-d="D2"><h3><span class="date">12/13（日）</span>伊斯坦堡 → 斯德哥爾摩</h3><p>航程約 3 小時 20 分，抵達後斯德哥爾摩市區觀光。</p></li>
+    <li data-d="D3"><h3><span class="date">12/14（一）</span>斯德哥爾摩 → 雷克雅維克</h3><p>航程約 3 小時 25 分，前往藍湖溫泉，需自備泳裝。</p></li>
+    <li data-d="D4"><h3><span class="date">12/15（二）</span>冰島南部</h3><p>塞里雅蘭瀑布、斯科加爾瀑布、黑沙灘。</p></li>
+    <li data-d="D5"><h3><span class="date">12/16（三）</span>冰島黃金線與雪上摩托車</h3><p>蓋錫爾間歇噴泉、黃金瀑布，雪上摩托車體驗約 3 到 4 小時。</p></li>
+    <li data-d="D6"><h3><span class="date">12/17（四）</span>雷克雅維克市區觀光</h3><p>維京船雕塑、Harpa 音樂廳、哈爾格林姆教堂、市政廳、國會樓。</p></li>
+    <li data-d="D7"><h3><span class="date">12/18（五）</span>赫爾辛基市區觀光</h3><p>港區露天市場、中央市集、議會廣場、烏斯潘斯基東正教教堂。</p></li>
+    <li data-d="D8"><h3><span class="date">12/19（六）</span>波爾沃小鎮，登詩麗雅號遊輪</h3><p>晚上搭乘遊輪橫越波羅的海。</p></li>
+    <li data-d="D9" class="transit"><h3><span class="date">12/20（日）</span>塔林 → 伊斯坦堡</h3><p>塔林市區觀光後前往機場，航程約 3 小時 5 分，在伊斯坦堡轉機。</p></li>
+    <li data-d="D10" class="transit"><h3><span class="date">12/21（一）</span>伊斯坦堡 → 桃園</h3><p>航程約 10 小時 25 分，抵達桃園機場。</p></li>
+  </ol>
+
+  <h2>出發前提醒</h2>
+  <section class="notes">
+    <h3>不在行程內的國家</h3>
+    <p>挪威、丹麥不在這團行程中，選 eSIM 時不用為它們另外考慮。</p>
+
+    <h3>eSIM 涵蓋確認清單</h3>
+    <ul>
+      <li>必須涵蓋：瑞典、冰島、芬蘭、愛沙尼亞。</li>
+      <li>冰島不屬於歐盟，不要買只涵蓋「歐盟和英國」的方案。</li>
+      <li>想在伊斯坦堡轉機時也上網，再確認方案是否涵蓋土耳其。</li>
+      <li>下單前，到方案詳細資料逐國核對涵蓋清單。</li>
+    </ul>
+
+    <h3>遊輪上的網路</h3>
+    <p>船在海上時，手機可能連到船上的海上網路，漫遊費通常很高。建議上船後關閉 eSIM 與原門號的數據漫遊，需要時使用船上 Wi-Fi。</p>
+
+    <h3>行程以出發前說明會為準</h3>
+    <p>行程表與飯店視航班與旅館確認結果，旅行社保留調整的權利。</p>
+  </section>
+
+  <footer>資料來源：可樂旅遊行程頁。日期依出發日 12/12 與返抵日 12/21 逐日推算，實際航班時間以出發前說明會為準。</footer>
+</main>
+</body>
+</html>
