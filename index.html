@@ -3,168 +3,817 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>北歐冰島 10 日：行程國家整理</title>
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FFFCF6">
+<title>北歐冰島十日遊</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #eef3f5;
-  --surface: #ffffff;
-  --ink: #16242f;
-  --muted: #55687a;
-  --line: #c9d6dd;
-  --fjord: #1f4e6b;
-  --aurora: #1f8a78;
-  --lava: #b24a36;
-  --transit: #8a98a4;
+  --bg: #FFFCF6;
+  --ink: #45434b;
+  --muted: #6a6872;
+  --coral: #F2A497;
+  --yellow: #F6D27A;
+  --aqua: #A8D3E6;
+  --green: #B9DAA5;
+  --line: 3px solid var(--ink);
+  --nav-h: calc(60px + env(safe-area-inset-top, 0px));
+  color-scheme: light;
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0f1a22; --surface: #17262f; --ink: #e6eef2; --muted: #9db0bd;
-    --line: #2b4150; --fjord: #6fb0d6; --aurora: #55c4ae; --lava: #e08a74; --transit: #7d8f9c;
-  }
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  height: 100%;
+  scroll-padding-top: calc(var(--nav-h) + 12px);
+  -webkit-text-size-adjust: 100%;
 }
-:root[data-theme="dark"] {
-  --bg: #0f1a22; --surface: #17262f; --ink: #e6eef2; --muted: #9db0bd;
-  --line: #2b4150; --fjord: #6fb0d6; --aurora: #55c4ae; --lava: #e08a74; --transit: #7d8f9c;
-}
-html { height: 100%; scroll-padding-top: env(safe-area-inset-top, 0px); }
-* { box-sizing: border-box; }
 body {
   margin: 0; min-height: 100%;
   background: var(--bg); color: var(--ink);
-  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
-  line-height: 1.7; font-size: 16px;
+  font-family: "Huninn", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  font-synthesis: none;
+  font-size: 16px; line-height: 1.7;
 }
-main { max-width: 860px; margin: 0 auto; padding: 32px 20px 64px; }
-h1, h2 { font-family: "Noto Serif TC", "PMingLiU", serif; line-height: 1.3; }
-h1 { font-size: clamp(1.7rem, 5vw, 2.4rem); margin: 0 0 8px; }
-h2 { font-size: 1.35rem; margin: 48px 0 16px; }
-.sub { color: var(--muted); margin: 0; }
+h1, h2, h3, h4, b { font-weight: 400; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px dashed var(--ink); outline-offset: 3px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-/* Route strip */
-.route { margin-top: 28px; overflow-x: auto; padding-bottom: 8px; }
-.route ol { list-style: none; margin: 0; padding: 0; display: flex; align-items: flex-start; min-width: max-content; }
-.route li { position: relative; padding: 22px 26px 0 0; font-size: .95rem; white-space: nowrap; }
-.route li::before { content: ""; position: absolute; top: 6px; left: 0; width: 100%; height: 2px; background: var(--line); }
-.route li::after { content: ""; position: absolute; top: 0; left: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--fjord); }
-.route li.transit::after { background: var(--bg); border: 2px solid var(--transit); }
-.route li:last-child::before { width: 14px; }
-.route li small { display: block; color: var(--muted); font-size: .78rem; }
-.legend { font-size: .85rem; color: var(--muted); margin-top: 10px; }
-
-/* Country table */
-.tablewrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
-table { border-collapse: collapse; width: 100%; min-width: 560px; }
-th, td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
-tr:last-child td { border-bottom: 0; }
-th { font-size: .85rem; color: var(--muted); font-weight: 500; }
-td small { color: var(--muted); font-size: .8rem; }
-td.country { font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 1.1rem; white-space: nowrap; }
-.tag { display: inline-block; padding: 1px 10px; border-radius: 99px; font-size: .8rem; border: 1px solid; }
-.tag.visit { color: var(--aurora); border-color: var(--aurora); }
-.tag.transit { color: var(--muted); border-color: var(--transit); }
-
-/* Timeline */
-.days { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); margin-left: 18px; }
-.days li { position: relative; padding: 0 0 26px 28px; }
-.days li::before {
-  content: attr(data-d); position: absolute; left: -19px; top: 0;
-  width: 36px; height: 36px; border-radius: 50%; background: var(--fjord); color: var(--bg);
-  display: grid; place-items: center; font-size: .8rem; font-weight: 700;
+/* ---------- 頂端固定選單 ---------- */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  background: var(--bg); border-bottom: var(--line);
+  padding: env(safe-area-inset-top, 0px) 12px 0;
 }
-.days li.transit::before { background: var(--bg); color: var(--muted); border: 2px solid var(--transit); }
-.days h3 { margin: 0; font-size: 1.05rem; line-height: 1.5; padding-top: 5px; }
-.days .date { display: block; font-family: "Noto Sans TC", sans-serif; font-size: .8rem; font-weight: 500; color: var(--aurora); }
-.days p { margin: 4px 0 0; color: var(--muted); font-size: .95rem; }
+.nav ul {
+  list-style: none; margin: 0 auto; padding: 9px 0;
+  max-width: 720px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+}
+.nav a {
+  display: block; text-align: center; padding: 5px 0; line-height: 1.4;
+  border: var(--line); border-radius: 999px; background: #fff;
+  color: var(--ink); text-decoration: none; font-size: 15px;
+}
+.nav a[aria-current="true"] { background: var(--yellow); box-shadow: 0 3px 0 var(--ink); }
 
-/* Notes */
-.notes { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--lava); border-radius: 10px; padding: 8px 20px 12px; }
-.notes h3 { font-size: 1rem; margin: 14px 0 4px; }
-.notes p, .notes ul { margin: 0; color: var(--muted); font-size: .95rem; }
-.notes ul { padding-left: 1.2em; }
-footer { margin-top: 40px; font-size: .8rem; color: var(--muted); }
-@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-a { color: var(--fjord); }
+main {
+  max-width: 720px; margin: 0 auto;
+  padding: calc(var(--nav-h) - env(safe-area-inset-top, 0px) + 16px) 16px 56px;
+}
+section { margin-top: 48px; }
+section.hero { margin-top: 0; }
+
+.h2 {
+  display: inline-block; margin: 0 0 6px; padding: 2px 18px;
+  border: var(--line); border-radius: 999px; background: var(--c, var(--yellow));
+  font-size: 1.25rem; box-shadow: 3px 3px 0 var(--ink);
+}
+.lead { margin: 6px 0 16px; color: var(--muted); font-size: .92rem; }
+
+/* ---------- 首頁 ---------- */
+.hero { text-align: center; }
+.scene {
+  border: var(--line); border-radius: 28px; overflow: hidden;
+  background: var(--aqua); box-shadow: 5px 5px 0 var(--ink);
+}
+.scene svg { display: block; width: 100%; height: auto; }
+h1 { font-size: clamp(2.1rem, 10vw, 3.1rem); line-height: 1.25; margin: 26px 0 6px; }
+.mark { background: linear-gradient(transparent 58%, var(--yellow) 58% 92%, transparent 92%); padding: 0 .18em; }
+.when { margin: 0; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
+.chips li { border: 2px solid var(--ink); border-radius: 999px; padding: 0 12px; font-size: .9rem; background: var(--c); }
+.chips .dash { border-style: dashed; background: var(--bg); }
+.cd-label { margin: 26px 0 8px; font-size: 1.05rem; }
+.cd { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 420px; margin: 0 auto; }
+.cd[hidden], .cd-msg[hidden] { display: none; }
+.cd div { border: var(--line); border-radius: 18px; padding: 8px 0 6px; box-shadow: 3px 3px 0 var(--ink); }
+.cd b { display: block; font-size: 1.95rem; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.cd span { font-size: .82rem; }
+.cd .cd-d { background: var(--coral); } .cd .cd-h { background: var(--yellow); }
+.cd .cd-m { background: var(--aqua); } .cd .cd-s { background: var(--green); }
+.cd-msg { max-width: 420px; margin: 0 auto; padding: 12px 16px; border: var(--line); border-radius: 18px; background: var(--green); box-shadow: 3px 3px 0 var(--ink); }
+
+/* ---------- 國家 ---------- */
+.grid { display: grid; gap: 18px; grid-template-columns: 1fr; }
+.country { border: var(--line); border-radius: 22px; background: #fff; overflow: hidden; box-shadow: 4px 4px 0 var(--ink); }
+.country.transit { border-style: dashed; }
+.country .pic { background: var(--c); border-bottom: var(--line); padding: 8px; }
+.country .pic svg { display: block; width: 100%; height: 104px; }
+.country .body { padding: 12px 16px 16px; }
+.country h3 { margin: 0; font-size: 1.35rem; line-height: 1.4; }
+.country .days { margin: 0; color: var(--muted); font-size: .9rem; }
+.country .spots-text { margin: 8px 0 10px; font-size: .95rem; }
+
+/* ---------- 小標籤 ---------- */
+.tag {
+  display: inline-block; padding: 0 10px; margin: 0 6px 4px 0;
+  border: 2px solid var(--ink); border-radius: 999px;
+  font-size: .78rem; line-height: 1.65; background: #fff; white-space: nowrap;
+}
+.t-plane { background: var(--aqua); } .t-bus { background: var(--yellow); }
+.t-ship { background: var(--coral); } .t-snow { background: var(--green); }
+.t-look { background: #fff; border-style: dashed; }
+.t-visit { background: var(--green); } .t-transit { background: var(--bg); border-style: dashed; }
+.legend { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 0; margin: 0 0 4px; font-size: .85rem; color: var(--muted); }
+.legend .sep { width: 12px; }
+
+/* ---------- 每日行程 ---------- */
+.tabs {
+  position: sticky; top: var(--nav-h); z-index: 40;
+  display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none;
+  margin: 0 -16px; padding: 10px 16px 12px; background: var(--bg);
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  flex: 0 0 auto; width: 66px; padding: 6px 0 5px; text-align: center; line-height: 1.25;
+  border: var(--line); border-radius: 18px; background: #fff; cursor: pointer;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.tab span { display: block; }
+.tab .tn { font-size: 1.05rem; } .tab .td { font-size: .82rem; } .tab .tw { font-size: .72rem; color: var(--muted); }
+.tab[aria-selected="true"] { background: var(--coral); transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+.tab[aria-selected="true"] .tw { color: var(--ink); }
+
+.panel { margin-top: 6px; border: var(--line); border-radius: 24px; background: #fff; overflow: hidden; box-shadow: 5px 5px 0 var(--ink); }
+.phead { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: var(--line); background: var(--c); }
+.phead .ill { flex: none; width: 104px; }
+.phead .ill svg { display: block; width: 100%; height: auto; }
+.phead .meta { min-width: 0; }
+.phead .where { margin: 0; font-size: .82rem; }
+.phead h3 { margin: 0; font-size: 1.3rem; line-height: 1.35; }
+.phead .date { margin: 0; font-size: .88rem; }
+
+.tl { list-style: none; margin: 0; padding: 20px 18px 6px 22px; }
+.tl > li {
+  position: relative; margin-left: 9px; padding: 0 0 22px 26px;
+  border-left: 3px dashed var(--ink);
+}
+.tl > li:last-child { border-left-color: transparent; padding-bottom: 10px; }
+.tl > li::before {
+  content: ""; position: absolute; left: -11px; top: 3px; width: 19px; height: 19px;
+  border: 3px solid var(--ink); border-radius: 50%; background: var(--n, #fff);
+}
+.tl h4 { margin: 2px 0 0; font-size: 1.05rem; line-height: 1.5; }
+.tl .meta { margin: 2px 0 0; color: var(--muted); font-size: .9rem; line-height: 1.6; }
+.spots { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 0; padding: 0; list-style: none; }
+.spots li { padding: 0 11px; border-radius: 12px; background: var(--bg); border: 2px solid var(--ink); font-size: .88rem; line-height: 1.7; }
+.note { margin: 10px 0 0; padding: 6px 12px; border: 3px dashed var(--ink); border-radius: 14px; background: #fff; font-size: .88rem; line-height: 1.65; }
+.note + .note { margin-top: 8px; }
+.pager { display: flex; justify-content: space-between; gap: 12px; padding: 4px 18px 18px; }
+.pager button {
+  min-width: 108px; padding: 4px 14px; border: var(--line); border-radius: 999px;
+  background: var(--aqua); cursor: pointer; box-shadow: 3px 3px 0 var(--ink);
+}
+.pager button.next { background: var(--coral); }
+.pager button:disabled { opacity: .35; cursor: default; box-shadow: none; }
+.pager button:not(:disabled):active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+
+/* ---------- 提醒 ---------- */
+.cards { display: grid; gap: 18px; grid-template-columns: 1fr; }
+.card { border: var(--line); border-radius: 22px; background: #fff; overflow: hidden; box-shadow: 4px 4px 0 var(--ink); }
+.card h3 { margin: 0; padding: 8px 16px; border-bottom: var(--line); background: var(--c); font-size: 1.1rem; }
+.card ul { list-style: none; margin: 0; padding: 12px 16px 14px; }
+.card li { position: relative; padding-left: 20px; font-size: .93rem; line-height: 1.65; }
+.card li + li { margin-top: 6px; }
+.card li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 9px; height: 9px; border-radius: 50%; background: var(--c); border: 2px solid var(--ink); }
+footer { margin-top: 44px; font-size: .82rem; color: var(--muted); text-align: center; line-height: 1.7; }
+
+@media (min-width: 640px) {
+  .grid, .cards { grid-template-columns: 1fr 1fr; }
+  .phead .ill { width: 132px; }
+  .tab { width: 74px; }
+}
+
+/* ---------- 動畫（可在系統設定中減少動態效果） ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+  .plane { animation: fly 30s linear infinite; }
+  .bob { animation: bob 3s ease-in-out infinite; }
+  .ship { animation: bobship 3.4s ease-in-out infinite; }
+  .rays { animation: spin 48s linear infinite; }
+  .c1 { animation: drift 16s ease-in-out infinite alternate; }
+  .c2 { animation: drift 20s ease-in-out -6s infinite alternate-reverse; }
+  .au1 { animation: sway 8s ease-in-out infinite alternate; }
+  .au2 { animation: sway 10s ease-in-out -4s infinite alternate-reverse; }
+  .waves { animation: sway 5s ease-in-out infinite alternate; }
+  .tw { animation: twinkle 2.6s ease-in-out infinite; }
+  .sn { animation: fall 9s linear infinite; }
+  .ill svg, .pic svg { animation: float 4.2s ease-in-out infinite; }
+  .grid .country:nth-child(2) .pic svg { animation-delay: -1s; }
+  .grid .country:nth-child(3) .pic svg { animation-delay: -2s; }
+  .grid .country:nth-child(4) .pic svg { animation-delay: -3s; }
+  .tab.bounce { animation: tabBounce .6s cubic-bezier(.3, 1.4, .5, 1); }
+  .panel.enter { animation: panelPop .5s cubic-bezier(.3, 1.4, .5, 1); }
+  .panel.enter .tl > li { animation: pop .5s cubic-bezier(.3, 1.5, .5, 1) both; animation-delay: calc(var(--i) * 80ms + 80ms); }
+  .panel.enter .phead { animation: pop .45s cubic-bezier(.3, 1.5, .5, 1) both; }
+}
+@keyframes fly { from { transform: translate(-90px, 52px); } to { transform: translate(400px, 34px); } }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes bobship { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(3px) rotate(-1.5deg); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes drift { from { transform: translateX(0); } to { transform: translateX(26px); } }
+@keyframes sway { from { transform: translateX(-10px); } to { transform: translateX(10px); } }
+@keyframes twinkle { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+@keyframes fall { from { transform: translateY(-70px); opacity: 0; } 12% { opacity: 1; } to { transform: translateY(210px); opacity: .9; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes tabBounce { 0% { scale: 1; } 30% { scale: .82; } 58% { scale: 1.16; } 78% { scale: .96; } 100% { scale: 1; } }
+@keyframes panelPop { 0% { transform: translateY(14px) scale(.97); } 60% { transform: translateY(-4px) scale(1.01); } 100% { transform: none; } }
+@keyframes pop { 0% { opacity: 0; transform: translateY(18px) scale(.94); } 60% { opacity: 1; transform: translateY(-4px) scale(1.02); } 100% { opacity: 1; transform: none; } }
+.plane { transform: translate(120px, 44px); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .sn { opacity: .9; }
+}
 </style>
 </head>
 <body>
+
+<!-- SVG 插圖素材庫 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <path id="cloud" d="M0 0 a9 9 0 0 1 3 -17 a13 13 0 0 1 24 -5 a11 11 0 0 1 18 7 a8 8 0 0 1 4 15 z" fill="#fff" stroke="#45434b" stroke-width="3" stroke-linejoin="round"/>
+    <path id="spark" d="M0 -6 L1.8 -1.8 L6 0 L1.8 1.8 L0 6 L-1.8 1.8 L-6 0 L-1.8 -1.8 Z" fill="#fff"/>
+
+    <!-- 飛機 -->
+    <g id="plane-only" stroke="#45434b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M6 2 L-4 -13 L9 -13 L18 2 Z" fill="#F2A497"/>
+      <rect x="0" y="0" width="60" height="17" rx="8.5" fill="#fff"/>
+      <path d="M26 13 L20 31 L36 31 L45 13 Z" fill="#F2A497"/>
+      <circle cx="14" cy="8" r="2.4" fill="#A8D3E6" stroke-width="2"/>
+      <circle cx="23" cy="8" r="2.4" fill="#A8D3E6" stroke-width="2"/>
+      <path d="M48 5 H53 Q55 8 53 11 H48 Z" fill="#A8D3E6" stroke-width="2"/>
+    </g>
+
+    <!-- 雷克雅維克哈爾格林姆教堂 -->
+    <g id="church-only" stroke="#45434b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M0 110 V98 H12 V88 H24 V78 H32 V110 Z" fill="#fff"/>
+      <path d="M80 110 V98 H68 V88 H56 V78 H48 V110 Z" fill="#fff"/>
+      <path d="M32 110 V26 L40 0 L48 26 V110 Z" fill="#fff"/>
+      <path d="M6 99 V109 M18 89 V109 M74 99 V109 M62 89 V109" stroke-width="2" fill="none"/>
+      <rect x="37" y="36" width="6" height="20" rx="3" fill="#A8D3E6" stroke-width="2"/>
+      <path d="M35 110 V100 a5 5 0 0 1 10 0 V110 Z" fill="#F2A497" stroke-width="2.5"/>
+    </g>
+
+    <!-- 遊輪 -->
+    <g id="ship-only" stroke="#45434b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+      <rect x="33" y="0" width="14" height="15" fill="#F6D27A"/>
+      <rect x="20" y="14" width="40" height="15" fill="#fff"/>
+      <rect x="10" y="28" width="60" height="17" fill="#fff"/>
+      <path d="M0 45 H80 L70 65 H10 Z" fill="#F2A497"/>
+      <g fill="#A8D3E6" stroke-width="2">
+        <circle cx="29" cy="21.5" r="2.5"/><circle cx="40" cy="21.5" r="2.5"/><circle cx="51" cy="21.5" r="2.5"/>
+        <circle cx="18" cy="37" r="2.5"/><circle cx="29" cy="37" r="2.5"/><circle cx="40" cy="37" r="2.5"/><circle cx="51" cy="37" r="2.5"/><circle cx="62" cy="37" r="2.5"/>
+      </g>
+    </g>
+
+    <!-- 瑞典：斯德哥爾摩舊城區 -->
+    <symbol id="ill-stockholm" viewBox="0 0 120 90">
+      <g stroke="#45434b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <rect x="3" y="77" width="114" height="10" rx="5" fill="#A8D3E6"/>
+        <rect x="8" y="42" width="24" height="35" fill="#F6D27A"/><path d="M5 42 L20 22 L35 42 Z" fill="#F2A497"/>
+        <rect x="34" y="32" width="26" height="45" fill="#F2A497"/><path d="M31 32 L47 10 L63 32 Z" fill="#F6D27A"/>
+        <rect x="62" y="46" width="24" height="31" fill="#A8D3E6"/><path d="M59 46 L74 28 L89 46 Z" fill="#fff"/>
+        <rect x="88" y="38" width="26" height="39" fill="#B9DAA5"/><path d="M85 38 L101 18 L117 38 Z" fill="#F2A497"/>
+        <g fill="#fff" stroke-width="2">
+          <rect x="12" y="50" width="6" height="8"/><rect x="22" y="50" width="6" height="8"/><rect x="12" y="63" width="6" height="8"/><rect x="22" y="63" width="6" height="8"/>
+          <rect x="39" y="40" width="6" height="8"/><rect x="49" y="40" width="6" height="8"/><rect x="39" y="53" width="6" height="8"/><rect x="49" y="53" width="6" height="8"/>
+          <rect x="67" y="54" width="6" height="8"/><rect x="77" y="54" width="6" height="8"/>
+          <rect x="93" y="46" width="6" height="8"/><rect x="104" y="46" width="6" height="8"/><rect x="93" y="59" width="6" height="8"/><rect x="104" y="59" width="6" height="8"/>
+        </g>
+        <path d="M43 77 V68 a4 4 0 0 1 8 0 V77 Z" fill="#A8D3E6" stroke-width="2"/>
+      </g>
+    </symbol>
+
+    <!-- 冰島：藍湖溫泉 -->
+    <symbol id="ill-lagoon" viewBox="0 0 120 90">
+      <g stroke="#45434b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M45 54 q-7 -8 0 -15 q7 -7 0 -15 M62 52 q-7 -8 0 -15 q7 -7 0 -15 M79 54 q-7 -8 0 -15 q7 -7 0 -15" fill="none"/>
+        <ellipse cx="60" cy="68" rx="50" ry="16" fill="#fff"/>
+        <ellipse cx="60" cy="68" rx="40" ry="11" fill="#A8D3E6" stroke-width="2"/>
+        <path d="M3 66 L12 51 L25 57 L31 70 L8 76 Z" fill="#8b8993"/>
+        <path d="M117 66 L108 51 L95 57 L89 70 L112 76 Z" fill="#8b8993"/>
+        <circle cx="60" cy="63" r="8" fill="#fff"/>
+        <path d="M51 61 q9 -14 18 0 z" fill="#F2A497"/>
+        <circle cx="57" cy="64" r="1.3" fill="#45434b" stroke="none"/><circle cx="63" cy="64" r="1.3" fill="#45434b" stroke="none"/>
+        <path d="M45 72 q4 3 8 0 M67 72 q4 3 8 0" stroke="#fff" stroke-width="2.5" fill="none"/>
+      </g>
+    </symbol>
+
+    <!-- 冰島：瀑布 -->
+    <symbol id="ill-waterfall" viewBox="0 0 120 90">
+      <g stroke-linecap="round" fill="none" stroke-width="3">
+        <path d="M24 34 Q60 -4 96 34" stroke="#F2A497"/><path d="M30 38 Q60 6 90 38" stroke="#F6D27A"/><path d="M36 42 Q60 16 84 42" stroke="#B9DAA5"/>
+      </g>
+      <g stroke="#45434b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M0 36 H58 L52 80 H0 Z" fill="#B9DAA5"/>
+        <path d="M76 36 H120 V80 H70 Z" fill="#B9DAA5"/>
+        <path d="M58 36 H76 L74 74 H60 Z" fill="#fff"/>
+        <path d="M65 42 V68 M70 42 V66" stroke="#A8D3E6" fill="none"/>
+        <ellipse cx="67" cy="79" rx="28" ry="8" fill="#A8D3E6"/>
+        <circle cx="54" cy="74" r="4" fill="#fff"/><circle cx="80" cy="73" r="3.5" fill="#fff"/><circle cx="67" cy="71" r="4.5" fill="#fff"/>
+        <path d="M6 36 q5 -8 10 0 M22 36 q5 -8 10 0" fill="none" stroke-width="2.5"/>
+      </g>
+    </symbol>
+
+    <!-- 冰島：雪上摩托車 -->
+    <symbol id="ill-snowmobile" viewBox="0 0 120 90">
+      <g stroke="#45434b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M0 80 Q15 72 32 79 T66 79 T100 79 T126 78 V92 H0 Z" fill="#fff"/>
+        <rect x="24" y="66" width="52" height="12" rx="6" fill="#6f6d78"/>
+        <path d="M18 66 C18 54 32 50 42 50 H68 C78 50 82 44 88 42 L100 46 L96 66 Z" fill="#F2A497"/>
+        <path d="M70 50 L78 34 L90 41 L84 50 Z" fill="#A8D3E6"/>
+        <rect x="36" y="43" width="24" height="7" rx="3.5" fill="#F6D27A"/>
+        <path d="M86 69 H112 Q117 70 112 74 H80 Z" fill="#F6D27A"/>
+        <circle cx="50" cy="28" r="9" fill="#fff"/>
+        <path d="M43 28 a7 7 0 0 1 14 0 z" fill="#B9DAA5"/>
+        <path d="M43 38 H57 V44 H43 Z" fill="#B9DAA5" stroke-width="2.5"/>
+        <circle cx="102" cy="18" r="2.5" fill="#fff" stroke="none"/><circle cx="14" cy="30" r="2.5" fill="#fff" stroke="none"/><circle cx="26" cy="14" r="2" fill="#fff" stroke="none"/>
+      </g>
+    </symbol>
+
+    <!-- 冰島：哈爾格林姆教堂 -->
+    <symbol id="ill-church" viewBox="0 0 120 90">
+      <use href="#spark" transform="translate(22 20)"/><use href="#spark" transform="translate(100 14) scale(.8)"/><use href="#spark" transform="translate(104 52) scale(.6)"/>
+      <g stroke="#45434b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M6 86 H114" fill="none"/>
+      </g>
+      <use href="#church-only" transform="translate(38 4) scale(.76)"/>
+    </symbol>
+
+    <!-- 芬蘭：赫爾辛基大教堂 -->
+    <symbol id="ill-helsinki" viewBox="0 0 120 90">
+      <g stroke="#45434b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M60 4 V16 M55 9 H65" stroke="#F6D27A" stroke-width="3.5" fill="none"/>
+        <path d="M44 28 A16 16 0 0 1 76 28 Z" fill="#B9DAA5"/>
+        <rect x="46" y="27" width="28" height="12" fill="#fff"/>
+        <path d="M17 44 a7 7 0 0 1 14 0 Z" fill="#B9DAA5"/><path d="M89 44 a7 7 0 0 1 14 0 Z" fill="#B9DAA5"/>
+        <rect x="15" y="43" width="18" height="9" fill="#fff"/><rect x="87" y="43" width="18" height="9" fill="#fff"/>
+        <path d="M30 56 L60 38 L90 56 Z" fill="#fff"/>
+        <rect x="30" y="56" width="60" height="18" fill="#fff"/>
+        <path d="M40 56 V74 M50 56 V74 M60 56 V74 M70 56 V74 M80 56 V74" stroke-width="2" fill="none"/>
+        <rect x="22" y="74" width="76" height="6" fill="#fff"/><rect x="14" y="80" width="92" height="6" fill="#fff"/>
+        <rect x="55" y="62" width="10" height="12" rx="5" fill="#A8D3E6" stroke-width="2"/>
+      </g>
+    </symbol>
+
+    <!-- 遊輪場景 -->
+    <symbol id="ill-ship" viewBox="0 0 120 90">
+      <g stroke="#45434b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <use href="#cloud" transform="translate(8 28) scale(.8)"/>
+        <use href="#cloud" transform="translate(78 20) scale(.7)"/>
+      </g>
+      <use href="#ship-only" transform="translate(20 8)"/>
+      <g stroke="#fff" stroke-width="3.5" stroke-linecap="round" fill="none">
+        <path d="M2 80 q6 -6 12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0"/>
+        <path d="M10 87 q6 -5 12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0" stroke="#45434b" stroke-width="2.5"/>
+      </g>
+    </symbol>
+
+    <!-- 愛沙尼亞：塔林舊城 -->
+    <symbol id="ill-tallinn" viewBox="0 0 120 90">
+      <g stroke="#45434b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M0 54 H8 V48 H16 V54 H24 V48 H32 V54 H88 V48 H96 V54 H104 V48 H112 V54 H120 V86 H0 Z" fill="#F6D27A"/>
+        <rect x="8" y="38" width="24" height="48" fill="#fff"/><path d="M4 38 L20 8 L36 38 Z" fill="#F2A497"/>
+        <rect x="88" y="38" width="24" height="48" fill="#fff"/><path d="M84 38 L100 8 L116 38 Z" fill="#F2A497"/>
+        <rect x="52" y="32" width="16" height="54" fill="#fff"/><path d="M50 32 L60 2 L70 32 Z" fill="#B9DAA5"/>
+        <g fill="#A8D3E6" stroke-width="2">
+          <path d="M16 56 V50 a4 4 0 0 1 8 0 V56 Z"/><path d="M96 56 V50 a4 4 0 0 1 8 0 V56 Z"/><path d="M56 50 V44 a4 4 0 0 1 8 0 V50 Z"/>
+          <path d="M16 74 V68 a4 4 0 0 1 8 0 V74 Z"/><path d="M96 74 V68 a4 4 0 0 1 8 0 V74 Z"/><path d="M56 70 V64 a4 4 0 0 1 8 0 V70 Z"/>
+        </g>
+        <path d="M0 86 H120" fill="none"/>
+      </g>
+    </symbol>
+
+    <!-- 土耳其：伊斯坦堡 -->
+    <symbol id="ill-istanbul" viewBox="0 0 120 90">
+      <g stroke="#45434b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <rect x="9" y="30" width="7" height="52" fill="#fff"/><path d="M8 30 L12.5 10 L17 30 Z" fill="#F2A497"/>
+        <rect x="104" y="30" width="7" height="52" fill="#fff"/><path d="M103 30 L107.5 10 L112 30 Z" fill="#F2A497"/>
+        <path d="M9 44 H16 M104 44 H111" stroke-width="2"/>
+        <rect x="24" y="58" width="72" height="24" fill="#fff"/>
+        <path d="M24 60 a10 10 0 0 1 20 0 Z" fill="#F6D27A"/><path d="M76 60 a10 10 0 0 1 20 0 Z" fill="#F6D27A"/>
+        <path d="M36 58 A24 24 0 0 1 84 58 Z" fill="#F6D27A"/>
+        <path d="M60 34 V28 M56.5 31 H63.5" stroke-width="2.5" fill="none"/>
+        <path d="M50 82 V72 a10 10 0 0 1 20 0 V82 Z" fill="#A8D3E6" stroke-width="2.5"/>
+        <path d="M30 82 V74 a4 4 0 0 1 8 0 V82 M82 82 V74 a4 4 0 0 1 8 0 V82" fill="#A8D3E6" stroke-width="2"/>
+        <path d="M0 82 H120" fill="none"/>
+      </g>
+    </symbol>
+
+    <!-- 飛機場景 -->
+    <symbol id="ill-plane" viewBox="0 0 120 90">
+      <g stroke="#45434b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <use href="#cloud" transform="translate(4 82) scale(.9)"/>
+        <use href="#cloud" transform="translate(74 28) scale(.75)"/>
+        <use href="#plane-only" transform="translate(20 36) scale(1.25)"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- 頂端固定選單 -->
+<nav class="nav" id="nav" aria-label="主選單">
+  <ul>
+    <li><a href="#top">首頁</a></li>
+    <li><a href="#countries">國家</a></li>
+    <li><a href="#schedule">行程</a></li>
+    <li><a href="#notes">提醒</a></li>
+  </ul>
+</nav>
+
 <main>
-  <header>
-    <h1>北歐冰島 10 日：行程國家整理</h1>
-    <p class="sub">可樂旅遊，2026/12/12 出發，2026/12/21 返抵桃園，經伊斯坦堡轉機</p>
+  <!-- 首頁 -->
+  <section id="top" class="hero" aria-labelledby="title">
+    <div class="scene">
+      <svg viewBox="0 0 360 250" role="img" aria-label="繪本風插圖：天空有極光與太陽，雪山前有冰島的教堂，海上有遊輪，天上有飛機">
+        <rect width="360" height="250" fill="#A8D3E6"/>
 
-    <nav class="route" aria-label="路線">
-      <ol>
-        <li class="transit">桃園<small>12/12 出發</small></li>
-        <li class="transit">伊斯坦堡<small>土耳其，12/12–12/13 轉機</small></li>
-        <li>斯德哥爾摩<small>瑞典，12/13–12/14</small></li>
-        <li>雷克雅維克<small>冰島，12/14–12/17</small></li>
-        <li>赫爾辛基<small>芬蘭，12/18–12/19</small></li>
-        <li>塔林<small>愛沙尼亞，12/20</small></li>
-        <li class="transit">伊斯坦堡<small>土耳其，12/20–12/21 轉機</small></li>
-        <li class="transit">桃園<small>12/21 返抵</small></li>
-      </ol>
-    </nav>
-    <p class="legend">實心圓點是入境觀光的城市，空心圓點是轉機點。</p>
-  </header>
+        <g class="au1"><path d="M-20 62 C40 24 100 86 180 50 C250 18 300 66 380 36 L380 88 C300 118 250 70 180 106 C100 142 40 94 -20 122 Z" fill="#B9DAA5" opacity=".9"/></g>
+        <g class="au2"><path d="M-20 92 C50 62 110 108 190 80 C260 56 310 96 380 72 L380 104 C310 128 260 92 190 114 C110 140 50 112 -20 130 Z" fill="#F6D27A" opacity=".65"/></g>
 
-  <h2>會去的國家</h2>
-  <div class="tablewrap">
-    <table>
-      <thead>
-        <tr><th>國家</th><th>天數</th><th>主要地點</th><th>性質</th></tr>
-      </thead>
-      <tbody>
-        <tr><td class="country">瑞典</td><td>D2–D3<br><small>12/13–12/14</small></td><td>斯德哥爾摩市區：皇宮、大教堂、舊城區</td><td><span class="tag visit">入境觀光</span></td></tr>
-        <tr><td class="country">冰島</td><td>D3–D6<br><small>12/14–12/17</small></td><td>藍湖溫泉、塞里雅蘭瀑布、斯科加爾瀑布、黑沙灘、黃金線、雪上摩托車、雷克雅維克市區</td><td><span class="tag visit">入境觀光</span></td></tr>
-        <tr><td class="country">芬蘭</td><td>D7–D8<br><small>12/18–12/19</small></td><td>赫爾辛基市區、波爾沃小鎮</td><td><span class="tag visit">入境觀光</span></td></tr>
-        <tr><td class="country">愛沙尼亞</td><td>D9<br><small>12/20</small></td><td>塔林舊城區、市政廳廣場</td><td><span class="tag visit">入境觀光</span></td></tr>
-        <tr><td class="country">土耳其</td><td>D1–D2、D9–D10<br><small>12/12–12/13、12/20–12/21</small></td><td>伊斯坦堡機場，去程與回程各轉機一次</td><td><span class="tag transit">僅轉機</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="legend">D8 搭乘詩麗雅號遊輪橫越波羅的海，航行途中不屬於任何一國。</p>
+        <g transform="translate(300 52)">
+          <g class="rays" stroke="#45434b" stroke-width="3" stroke-linecap="round">
+            <path d="M0 -36 V-30"/><path d="M0 -36 V-30" transform="rotate(45)"/><path d="M0 -36 V-30" transform="rotate(90)"/><path d="M0 -36 V-30" transform="rotate(135)"/>
+            <path d="M0 -36 V-30" transform="rotate(180)"/><path d="M0 -36 V-30" transform="rotate(225)"/><path d="M0 -36 V-30" transform="rotate(270)"/><path d="M0 -36 V-30" transform="rotate(315)"/>
+          </g>
+          <circle r="23" fill="#F6D27A" stroke="#45434b" stroke-width="3"/>
+          <circle cx="-7" cy="-3" r="1.9" fill="#45434b"/><circle cx="7" cy="-3" r="1.9" fill="#45434b"/>
+          <path d="M-5 5 Q0 9.5 5 5" fill="none" stroke="#45434b" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="-13" cy="3" r="3.2" fill="#F2A497"/><circle cx="13" cy="3" r="3.2" fill="#F2A497"/>
+        </g>
 
-  <h2>每日行程</h2>
-  <ol class="days">
-    <li data-d="D1" class="transit"><h3><span class="date">12/12（六）</span>桃園 → 伊斯坦堡</h3><p>航程約 12 小時 40 分，機上過夜。</p></li>
-    <li data-d="D2"><h3><span class="date">12/13（日）</span>伊斯坦堡 → 斯德哥爾摩</h3><p>航程約 3 小時 20 分，抵達後斯德哥爾摩市區觀光。</p></li>
-    <li data-d="D3"><h3><span class="date">12/14（一）</span>斯德哥爾摩 → 雷克雅維克</h3><p>航程約 3 小時 25 分，前往藍湖溫泉，需自備泳裝。</p></li>
-    <li data-d="D4"><h3><span class="date">12/15（二）</span>冰島南部</h3><p>塞里雅蘭瀑布、斯科加爾瀑布、黑沙灘。</p></li>
-    <li data-d="D5"><h3><span class="date">12/16（三）</span>冰島黃金線與雪上摩托車</h3><p>蓋錫爾間歇噴泉、黃金瀑布，雪上摩托車體驗約 3 到 4 小時。</p></li>
-    <li data-d="D6"><h3><span class="date">12/17（四）</span>雷克雅維克市區觀光</h3><p>維京船雕塑、Harpa 音樂廳、哈爾格林姆教堂、市政廳、國會樓。</p></li>
-    <li data-d="D7"><h3><span class="date">12/18（五）</span>赫爾辛基市區觀光</h3><p>港區露天市場、中央市集、議會廣場、烏斯潘斯基東正教教堂。</p></li>
-    <li data-d="D8"><h3><span class="date">12/19（六）</span>波爾沃小鎮，登詩麗雅號遊輪</h3><p>晚上搭乘遊輪橫越波羅的海。</p></li>
-    <li data-d="D9" class="transit"><h3><span class="date">12/20（日）</span>塔林 → 伊斯坦堡</h3><p>塔林市區觀光後前往機場，航程約 3 小時 5 分，在伊斯坦堡轉機。</p></li>
-    <li data-d="D10" class="transit"><h3><span class="date">12/21（一）</span>伊斯坦堡 → 桃園</h3><p>航程約 10 小時 25 分，抵達桃園機場。</p></li>
-  </ol>
+        <g>
+          <use class="tw" href="#spark" transform="translate(40 30)"/>
+          <use class="tw" href="#spark" transform="translate(118 18) scale(.7)" style="animation-delay:-.8s"/>
+          <use class="tw" href="#spark" transform="translate(214 30) scale(.9)" style="animation-delay:-1.6s"/>
+          <use class="tw" href="#spark" transform="translate(18 92) scale(.7)" style="animation-delay:-.4s"/>
+          <use class="tw" href="#spark" transform="translate(244 74) scale(.6)" style="animation-delay:-2s"/>
+        </g>
 
-  <h2>出發前提醒</h2>
-  <section class="notes">
-    <h3>不在行程內的國家</h3>
-    <p>挪威、丹麥不在這團行程中，選 eSIM 時不用為它們另外考慮。</p>
+        <g class="c1"><use href="#cloud" transform="translate(34 78)"/></g>
+        <g class="c2"><use href="#cloud" transform="translate(232 112) scale(.9)"/></g>
 
-    <h3>eSIM 涵蓋確認清單</h3>
-    <ul>
-      <li>必須涵蓋：瑞典、冰島、芬蘭、愛沙尼亞。</li>
-      <li>冰島不屬於歐盟，不要買只涵蓋「歐盟和英國」的方案。</li>
-      <li>想在伊斯坦堡轉機時也上網，再確認方案是否涵蓋土耳其。</li>
-      <li>下單前，到方案詳細資料逐國核對涵蓋清單。</li>
+        <g stroke="#45434b" stroke-width="3" stroke-linejoin="round">
+          <path d="M-10 200 L70 110 L110 150 L170 90 L250 175 L300 135 L370 200 Z" fill="#B9DAA5"/>
+          <g fill="#fff">
+            <path d="M70 110 L52 130 L61 125 L70 133 L79 124 L88 128 Z"/>
+            <path d="M170 90 L150 110 L159 106 L168 115 L178 105 L190 111 Z"/>
+            <path d="M300 135 L285 147 L293 144 L300 151 L308 143 L315 149 Z"/>
+          </g>
+        </g>
+
+        <g stroke-linecap="round" stroke-linejoin="round" stroke="#45434b" stroke-width="3">
+          <path d="M-5 190 Q30 182 60 190 T120 190 T180 190 T240 190 T300 190 T365 190 V252 H-5 Z" fill="#A8D3E6"/>
+        </g>
+        <g class="waves" stroke="#fff" stroke-width="3.5" stroke-linecap="round" fill="none">
+          <path d="M196 232 q6 -6 12 0 t12 0 t12 0"/><path d="M262 242 q6 -6 12 0 t12 0 t12 0"/><path d="M300 220 q6 -6 12 0 t12 0"/>
+        </g>
+
+        <g transform="translate(228 152)"><g class="ship"><use href="#ship-only"/></g></g>
+
+        <path d="M-5 202 Q40 192 100 198 Q150 204 192 216 Q170 240 120 252 H-5 Z" fill="#fff" stroke="#45434b" stroke-width="3" stroke-linejoin="round"/>
+        <use href="#church-only" transform="translate(64 94)"/>
+
+        <g class="plane"><g class="bob"><use href="#plane-only"/></g></g>
+
+        <g fill="#fff">
+          <circle class="sn" cx="28" cy="40" r="2.3" style="animation-duration:8s;animation-delay:-2s"/>
+          <circle class="sn" cx="78" cy="30" r="1.8" style="animation-duration:10s;animation-delay:-6s"/>
+          <circle class="sn" cx="132" cy="50" r="2.4" style="animation-duration:9s;animation-delay:-4s"/>
+          <circle class="sn" cx="186" cy="20" r="1.9" style="animation-duration:11s;animation-delay:-8s"/>
+          <circle class="sn" cx="240" cy="44" r="2.3" style="animation-duration:8.5s;animation-delay:-1s"/>
+          <circle class="sn" cx="292" cy="26" r="1.8" style="animation-duration:10.5s;animation-delay:-5s"/>
+          <circle class="sn" cx="338" cy="48" r="2.4" style="animation-duration:9.5s;animation-delay:-7s"/>
+        </g>
+      </svg>
+    </div>
+
+    <h1 id="title"><span class="mark">北歐冰島十日遊</span></h1>
+    <p class="when">2026/12/12 出發，12/21 返抵桃園</p>
+    <ul class="chips" aria-label="會去的國家">
+      <li style="--c:var(--yellow)">瑞典</li>
+      <li style="--c:var(--aqua)">冰島</li>
+      <li style="--c:var(--green)">芬蘭</li>
+      <li style="--c:var(--coral)">愛沙尼亞</li>
+      <li class="dash">土耳其（轉機）</li>
     </ul>
 
-    <h3>遊輪上的網路</h3>
-    <p>船在海上時，手機可能連到船上的海上網路，漫遊費通常很高。建議上船後關閉 eSIM 與原門號的數據漫遊，需要時使用船上 Wi-Fi。</p>
-
-    <h3>行程以出發前說明會為準</h3>
-    <p>行程表與飯店視航班與旅館確認結果，旅行社保留調整的權利。</p>
+    <p class="cd-label" id="cd-label">離出發還有</p>
+    <div class="cd" id="cd" role="timer" aria-labelledby="cd-label">
+      <div class="cd-d"><b id="cd-d">--</b><span>天</span></div>
+      <div class="cd-h"><b id="cd-h">--</b><span>小時</span></div>
+      <div class="cd-m"><b id="cd-m">--</b><span>分</span></div>
+      <div class="cd-s"><b id="cd-s">--</b><span>秒</span></div>
+    </div>
+    <p class="cd-msg" id="cd-msg" hidden></p>
   </section>
 
-  <footer>資料來源：可樂旅遊行程頁。日期依出發日 12/12 與返抵日 12/21 逐日推算，實際航班時間以出發前說明會為準。</footer>
+  <!-- 國家 -->
+  <section id="countries" aria-labelledby="h-countries">
+    <h2 class="h2" id="h-countries" style="--c:var(--green)">會去的國家</h2>
+    <p class="lead">4 國入境觀光，另外 1 國只在機場轉機。</p>
+    <div class="grid">
+      <article class="country" style="--c:var(--yellow)">
+        <div class="pic"><svg viewBox="0 0 120 90" aria-hidden="true"><use href="#ill-stockholm"/></svg></div>
+        <div class="body">
+          <h3>瑞典</h3>
+          <p class="days">D2–D3，12/13–12/14</p>
+          <p class="spots-text">斯德哥爾摩市區：皇宮、大教堂、舊城區。</p>
+          <span class="tag t-visit">入境觀光</span>
+        </div>
+      </article>
+      <article class="country" style="--c:var(--aqua)">
+        <div class="pic"><svg viewBox="0 0 120 90" aria-hidden="true"><use href="#ill-waterfall"/></svg></div>
+        <div class="body">
+          <h3>冰島</h3>
+          <p class="days">D3–D6，12/14–12/17</p>
+          <p class="spots-text">藍湖溫泉、南部瀑布與黑沙灘、黃金線、雪上摩托車、雷克雅未克市區。</p>
+          <span class="tag t-visit">入境觀光</span>
+        </div>
+      </article>
+      <article class="country" style="--c:var(--green)">
+        <div class="pic"><svg viewBox="0 0 120 90" aria-hidden="true"><use href="#ill-helsinki"/></svg></div>
+        <div class="body">
+          <h3>芬蘭</h3>
+          <p class="days">D7–D8，12/18–12/19</p>
+          <p class="spots-text">赫爾辛基市區、波爾沃小鎮，晚上登上詩麗雅號遊輪。</p>
+          <span class="tag t-visit">入境觀光</span>
+        </div>
+      </article>
+      <article class="country" style="--c:var(--coral)">
+        <div class="pic"><svg viewBox="0 0 120 90" aria-hidden="true"><use href="#ill-tallinn"/></svg></div>
+        <div class="body">
+          <h3>愛沙尼亞</h3>
+          <p class="days">D9，12/20</p>
+          <p class="spots-text">塔林舊城區、市政廳廣場、古城牆。</p>
+          <span class="tag t-visit">入境觀光</span>
+        </div>
+      </article>
+      <article class="country transit" style="--c:var(--bg)">
+        <div class="pic"><svg viewBox="0 0 120 90" aria-hidden="true"><use href="#ill-istanbul"/></svg></div>
+        <div class="body">
+          <h3>土耳其</h3>
+          <p class="days">D1–D2、D9–D10，12/12–12/13、12/20–12/21</p>
+          <p class="spots-text">伊斯坦堡機場，去程與回程各轉機一次。</p>
+          <span class="tag t-transit">僅轉機</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 每日行程 -->
+  <section id="schedule" aria-labelledby="h-schedule">
+    <h2 class="h2" id="h-schedule" style="--c:var(--coral)">每日行程</h2>
+    <p class="lead">點上方的日期，切換每天的行程。</p>
+    <div class="legend" aria-label="標籤說明">
+      <span class="tag t-plane">飛機</span><span class="tag t-bus">專車</span><span class="tag t-ship">遊輪</span><span class="tag t-snow">雪上摩托車</span>
+      <span class="sep"></span>
+      <span class="tag t-look">下車拍照</span><span class="tag t-look">入內參觀</span>
+    </div>
+
+    <div class="tabs" id="tabs" role="tablist" aria-label="選擇日期"></div>
+    <div class="panel" id="panel" role="tabpanel" tabindex="-1"></div>
+  </section>
+
+  <!-- 提醒 -->
+  <section id="notes" aria-labelledby="h-notes">
+    <h2 class="h2" id="h-notes" style="--c:var(--aqua)">出發前提醒</h2>
+    <p class="lead">行程表上寫的重點，加上選 eSIM 時要確認的事。</p>
+    <div class="cards">
+      <article class="card" style="--c:var(--yellow)">
+        <h3>出發前 14 天要決定</h3>
+        <ul>
+          <li>12/12 出發，14 天前約為 11/28。</li>
+          <li>藍湖：不泡的話要在這之前告知，每人退費 30 歐，14 天內或當天才取消不能退費。</li>
+          <li>雪上摩托車：不騎乘每人退費 60 歐；想自己單獨騎乘加 100 歐，需教練協助駕駛加 400 歐。</li>
+        </ul>
+      </article>
+      <article class="card" style="--c:var(--aqua)">
+        <h3>eSIM 確認清單</h3>
+        <ul>
+          <li>方案要涵蓋瑞典、冰島、芬蘭、愛沙尼亞。</li>
+          <li>冰島不屬於歐盟，不要買只涵蓋「歐盟和英國」的方案。</li>
+          <li>想在伊斯坦堡轉機時也上網，再確認是否涵蓋土耳其。</li>
+          <li>下單前，到方案詳細資料逐國核對涵蓋清單。</li>
+        </ul>
+      </article>
+      <article class="card" style="--c:var(--coral)">
+        <h3>遊輪與行李</h3>
+        <ul>
+          <li>上船後建議關閉 eSIM 與原門號的數據漫遊，船上海上網路的漫遊費通常很高。</li>
+          <li>D3 的中段航班對行李重量限制嚴格，搭機前先量好。</li>
+          <li>遊輪每人一件大件行李由行李車運送，超過一件約 25 歐。</li>
+        </ul>
+      </article>
+      <article class="card" style="--c:var(--green)">
+        <h3>記得帶</h3>
+        <ul>
+          <li>保暖外套，機上過夜用得到。</li>
+          <li>泳裝用具，D3 去藍湖。</li>
+          <li>中高筒防水靴或登山鞋，D5 雪上摩托車建議穿。</li>
+          <li>台灣駕照，騎雪上摩托車的駕駛人要出示。</li>
+          <li>歐規轉接插頭，團費已含，每人一個。</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    資料來源：可樂旅遊行程頁。日期依 12/12 出發、12/21 返抵逐日推算，<br>
+    行程與航班時間以出發前說明會為準。
+  </footer>
 </main>
+
+<script>
+(function () {
+  var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- 選單高度、目前所在區塊 ---- */
+  var nav = document.getElementById('nav');
+  function setNavH() { document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px'); }
+  setNavH(); window.addEventListener('resize', setNavH); window.addEventListener('load', setNavH);
+
+  var links = {}, ids = ['top', 'countries', 'schedule', 'notes'], ticking = false;
+  [].forEach.call(nav.querySelectorAll('a'), function (a) { links[a.getAttribute('href').slice(1)] = a; });
+  function spy() {
+    var line = nav.offsetHeight + window.innerHeight * 0.25, now = ids[0];
+    ids.forEach(function (id) {
+      if (document.getElementById(id).getBoundingClientRect().top <= line) now = id;
+    });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) now = ids[ids.length - 1];
+    ids.forEach(function (id) {
+      if (id === now) links[id].setAttribute('aria-current', 'true'); else links[id].removeAttribute('aria-current');
+    });
+  }
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(function () { ticking = false; spy(); });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  spy();
+
+  /* ---- 出發倒數（以台灣時間 12/12 00:00 為出發） ---- */
+  var T0 = Date.parse('2026-12-12T00:00:00+08:00');
+  var T1 = Date.parse('2026-12-22T00:00:00+08:00');
+  var cd = document.getElementById('cd'), msg = document.getElementById('cd-msg'), lab = document.getElementById('cd-label');
+  var nd = document.getElementById('cd-d'), nh = document.getElementById('cd-h'), nm = document.getElementById('cd-m'), ns = document.getElementById('cd-s');
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function tick() {
+    var now = Date.now(), diff = T0 - now;
+    if (diff > 0) {
+      var s = Math.floor(diff / 1000);
+      nd.textContent = Math.floor(s / 86400);
+      nh.textContent = pad(Math.floor(s % 86400 / 3600));
+      nm.textContent = pad(Math.floor(s % 3600 / 60));
+      ns.textContent = pad(s % 60);
+    } else {
+      cd.hidden = true; lab.hidden = true; msg.hidden = false;
+      msg.textContent = now < T1 ? '旅程進行中，路上小心，玩得開心！' : '旅程結束，歡迎回家！';
+    }
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* ---- 每日行程資料 ---- */
+  var TAG = {
+    plane: ['飛機', 't-plane'], bus: ['專車', 't-bus'], ship: ['遊輪', 't-ship'], snow: ['雪上摩托車', 't-snow'],
+    look: ['下車拍照', 't-look'], enter: ['入內參觀', 't-look']
+  };
+  var DAYS = [
+    { d: 'D1', date: '12/12', wd: '六', where: '台灣到土耳其', title: '桃園出發', ill: 'plane', c: 'var(--bg)', items: [
+      { n: '#fff', tags: ['plane'], t: '桃園 → 伊斯坦堡', m: '飛行約 12 小時 40 分，要在飛機上過夜。',
+        notes: ['請自備可以保暖的外套，穿舒適寬鬆的衣物與鞋子，機上空間較小。', '出發前會舉辦線上說明會，業務會通知連結、日期與時間。', '團費已含導覽耳機、行李束帶、歐規轉接插頭，每人各一。'] }
+    ] },
+    { d: 'D2', date: '12/13', wd: '日', where: '土耳其轉機，瑞典', title: '斯德哥爾摩', ill: 'stockholm', c: 'var(--yellow)', items: [
+      { n: 'var(--aqua)', tags: ['plane'], t: '伊斯坦堡 → 斯德哥爾摩', m: '在伊斯坦堡轉機，飛行約 3 小時 20 分。' },
+      { n: 'var(--yellow)', tags: ['look'], t: '斯德哥爾摩市區觀光', m: '瑞典首都，市區由兩萬多個島嶼組成，有「北歐威尼斯」的美名。', spots: ['皇宮', '大教堂', '舊城區'] }
+    ] },
+    { d: 'D3', date: '12/14', wd: '一', where: '瑞典到冰島', title: '飛往冰島，泡藍湖', ill: 'lagoon', c: 'var(--aqua)', items: [
+      { n: 'var(--aqua)', tags: ['plane'], t: '斯德哥爾摩 → 雷克雅未克', m: '飛行約 3 小時 25 分。' },
+      { n: 'var(--green)', tags: ['enter'], t: '藍湖溫泉', m: '位於雷克雅未克西北約 70 公里，戶外約 10℃ 泡溫泉。', spots: ['溫泉池', '蒸氣室', '烤箱', '溫水按摩水柱'],
+        notes: ['請自備泳裝用具。', '中段航班對行李重量限制嚴格，搭機前請留意。', 'SPA 按摩依流程費用不一，需自費。'] }
+    ] },
+    { d: 'D4', date: '12/15', wd: '二', where: '冰島', title: '冰島南部', ill: 'waterfall', c: 'var(--aqua)', items: [
+      { n: 'var(--green)', tags: ['look'], t: '冰島南部觀光', m: '塞里雅蘭瀑布高約 60 公尺，後方有小徑可以穿過去。', spots: ['塞里雅蘭瀑布', '斯科加爾瀑布', '黑沙灘'],
+        notes: ['瀑布附近地面濕滑；黑沙灘風浪大，請保持距離並面向海浪。'] }
+    ] },
+    { d: 'D5', date: '12/16', wd: '三', where: '冰島', title: '黃金線與雪上摩托車', ill: 'snowmobile', c: 'var(--aqua)', items: [
+      { n: 'var(--yellow)', tags: ['look'], t: '冰島黃金線', m: '沿途有火山地形、湖泊與草原。', spots: ['蓋錫爾間歇噴泉', '黃金瀑布'] },
+      { n: 'var(--green)', tags: ['snow', 'enter'], t: '雪上摩托車', m: '兩人共乘一台，全程約 3 到 4 小時，提供禦寒連身衣、手套、頭套與安全帽。',
+        notes: ['駕駛人需帶台灣駕照，不用國際駕照。', '單人騎乘加 100 歐、需教練協助駕駛加 400 歐，出發前 14 天告知。', '建議穿中高筒防水靴或登山鞋。'] }
+    ] },
+    { d: 'D6', date: '12/17', wd: '四', where: '冰島', title: '雷克雅未克市區', ill: 'church', c: 'var(--aqua)', items: [
+      { n: 'var(--coral)', tags: ['look'], t: '雷克雅未克市區觀光', m: '市區地標一次逛完。', spots: ['維京船雕塑', 'Harpa 音樂廳', '哈爾格林姆教堂', '市政廳', '國會樓'] }
+    ] },
+    { d: 'D7', date: '12/18', wd: '五', where: '芬蘭', title: '赫爾辛基', ill: 'helsinki', c: 'var(--green)', items: [
+      { n: 'var(--green)', tags: ['look'], t: '赫爾辛基市區觀光', m: '芬蘭首都，混合北歐與俄羅斯風情。', spots: ['港區露天市場', '中央市集', '議會廣場', '烏斯潘斯基東正教教堂'],
+        notes: ['中央市集週一至週六 9:00 到 18:00 營業。', '烏斯潘斯基東正教教堂入內需自費門票，每人 5 歐。', '冰島到赫爾辛基的移動，行程表沒有列出，請以出發前說明會為準。'] }
+    ] },
+    { d: 'D8', date: '12/19', wd: '六', where: '芬蘭，波羅的海', title: '波爾沃與遊輪', ill: 'ship', c: 'var(--green)', items: [
+      { n: 'var(--yellow)', tags: [], t: '波爾沃小鎮', m: '芬蘭第二古城，在舊城區漫步。', spots: ['舊市政廳', '大教堂', '河邊磚紅色木屋群'] },
+      { n: 'var(--coral)', tags: ['ship'], t: '詩麗雅號遊輪 Silja Line', m: '橫越波羅的海。大件行李由行李車協助運送，每人一件。',
+        notes: ['超過一件大件行李，運送費約 25 歐，以當日為準。', '若遊輪客滿，會改搭 Eckeroline 或 Viking Line。', '上船後建議關閉數據漫遊，改用船上 Wi-Fi。'] }
+    ] },
+    { d: 'D9', date: '12/20', wd: '日', where: '愛沙尼亞，土耳其轉機', title: '塔林，返程轉機', ill: 'tallinn', c: 'var(--coral)', items: [
+      { n: 'var(--coral)', tags: ['look'], t: '塔林市區觀光', m: '愛沙尼亞首都，舊城區保存完整。', spots: ['舊城區', '市政廳廣場', '聖尼古拉教堂', '三姐妹之屋', '聖歐拉夫教堂', '圖穆皮城堡', '古城牆'] },
+      { n: 'var(--yellow)', tags: ['bus'], t: '前往機場', m: '搭乘專車前往塔林機場。' },
+      { n: 'var(--aqua)', tags: ['plane'], t: '塔林 → 伊斯坦堡', m: '飛行約 3 小時 5 分，在伊斯坦堡轉機飛往台北。' }
+    ] },
+    { d: 'D10', date: '12/21', wd: '一', where: '土耳其到台灣', title: '回到桃園', ill: 'plane', c: 'var(--bg)', items: [
+      { n: 'var(--aqua)', tags: ['plane'], t: '伊斯坦堡 → 桃園', m: '飛行約 10 小時 25 分，抵達桃園國際機場。' }
+    ] }
+  ];
+
+  var tabsEl = document.getElementById('tabs'), panel = document.getElementById('panel');
+  var tabBtns = [], cur = 0;
+
+  DAYS.forEach(function (day, i) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'tab'; b.id = 'tab-' + i;
+    b.setAttribute('role', 'tab'); b.setAttribute('aria-controls', 'panel');
+    b.innerHTML = '<span class="tn">' + day.d + '</span><span class="td">' + day.date + '</span><span class="tw">週' + day.wd + '</span>';
+    b.addEventListener('click', function () { select(i, false); });
+    b.addEventListener('keydown', function (e) {
+      var k = e.key, j = null;
+      if (k === 'ArrowRight') j = Math.min(i + 1, DAYS.length - 1);
+      else if (k === 'ArrowLeft') j = Math.max(i - 1, 0);
+      else if (k === 'Home') j = 0;
+      else if (k === 'End') j = DAYS.length - 1;
+      if (j !== null) { e.preventDefault(); select(j, true); }
+    });
+    tabsEl.appendChild(b); tabBtns.push(b);
+  });
+
+  function tagHtml(keys) {
+    return keys.map(function (k) { return '<span class="tag ' + TAG[k][1] + '">' + TAG[k][0] + '</span>'; }).join('');
+  }
+
+  function render(i) {
+    var day = DAYS[i];
+    var h = '<div class="phead" style="--c:' + day.c + '">' +
+      '<div class="ill"><svg viewBox="0 0 120 90" aria-hidden="true"><use href="#ill-' + day.ill + '"/></svg></div>' +
+      '<div class="meta"><p class="where">' + day.where + '</p><h3>' + day.title + '</h3>' +
+      '<p class="date">' + day.d + '，' + day.date + '（週' + day.wd + '）</p></div></div>';
+    h += '<ol class="tl">';
+    day.items.forEach(function (it, n) {
+      h += '<li style="--n:' + it.n + ';--i:' + n + '">';
+      if (it.tags && it.tags.length) h += '<div>' + tagHtml(it.tags) + '</div>';
+      h += '<h4>' + it.t + '</h4>';
+      if (it.m) h += '<p class="meta">' + it.m + '</p>';
+      if (it.spots) h += '<ul class="spots">' + it.spots.map(function (s) { return '<li>' + s + '</li>'; }).join('') + '</ul>';
+      if (it.notes) h += it.notes.map(function (t) { return '<p class="note">' + t + '</p>'; }).join('');
+      h += '</li>';
+    });
+    h += '</ol>';
+    h += '<div class="pager"><button type="button" class="prev"' + (i === 0 ? ' disabled' : '') + '>上一天</button>' +
+         '<button type="button" class="next"' + (i === DAYS.length - 1 ? ' disabled' : '') + '>下一天</button></div>';
+    panel.innerHTML = h;
+    panel.setAttribute('aria-labelledby', 'tab-' + i);
+    panel.classList.remove('enter'); void panel.offsetWidth; panel.classList.add('enter');
+    spy();
+    var p = panel.querySelector('.prev'), n = panel.querySelector('.next');
+    p.addEventListener('click', function () { if (cur > 0) select(cur - 1, false, true); });
+    n.addEventListener('click', function () { if (cur < DAYS.length - 1) select(cur + 1, false, true); });
+  }
+
+  function select(i, focus, scrollToTop) {
+    cur = i;
+    tabBtns.forEach(function (b, j) {
+      var on = j === i;
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+      b.tabIndex = on ? 0 : -1;
+      b.classList.remove('bounce');
+    });
+    void tabsEl.offsetWidth;
+    tabBtns[i].classList.add('bounce');
+    render(i);
+
+    var t = tabBtns[i];
+    tabsEl.scrollTo({ left: t.offsetLeft - (tabsEl.clientWidth - t.offsetWidth) / 2, behavior: RM ? 'auto' : 'smooth' });
+    if (focus) t.focus({ preventScroll: true });
+
+    var top = panel.getBoundingClientRect().top, limit = tabsEl.getBoundingClientRect().bottom;
+    if (top < limit) window.scrollBy({ top: top - limit - 8, behavior: RM ? 'auto' : 'smooth' });
+  }
+
+  function initialIndex() {
+    var t = new Date(Date.now() + 8 * 3600 * 1000);
+    var key = t.getUTCFullYear() * 10000 + (t.getUTCMonth() + 1) * 100 + t.getUTCDate();
+    return (key >= 20261212 && key <= 20261221) ? key - 20261212 : 0;
+  }
+  var first = initialIndex();
+  tabBtns.forEach(function (b, j) { b.setAttribute('aria-selected', j === first ? 'true' : 'false'); b.tabIndex = j === first ? 0 : -1; });
+  cur = first; render(first);
+  window.addEventListener('load', function () {
+    var t = tabBtns[first];
+    tabsEl.scrollLeft = Math.max(0, t.offsetLeft - (tabsEl.clientWidth - t.offsetWidth) / 2);
+  });
+})();
+</script>
 </body>
 </html>
